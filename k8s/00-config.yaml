@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: ebs
+data:
+  MYSQL_HOST: "mysql"
+  MYSQL_USER: "root"
+  MYSQL_DB: "ebs"
+  MYSQL_PORT: "3306"
+  REDIS_URL: "redis://redis:6379"
+  NATS_URL: "nats://nats:4222"
+  PORT: "3000"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secrets
+  namespace: ebs
+type: Opaque
+stringData:
+  MYSQL_ROOT_PASSWORD: "rootpass"
+  MYSQL_PASSWORD: "rootpass"

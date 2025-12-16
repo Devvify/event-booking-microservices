@@ -1,0 +1,71 @@
+{
+  "info": {
+    "name": "Event Booking Microservices MVP",
+    "_postman_id": "b9e3d2b1-0000-0000-0000-000000000000",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create User",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "url": {"raw":"http://localhost:3001/users","protocol":"http","host":["localhost"],"port":"3001","path":["users"]},
+        "body": {"mode":"raw","raw":"{\n  \"name\": \"Aditi\",\n  \"email\": \"aditi@example.com\"\n}"}
+      }
+    },
+    {
+      "name": "Get All Users",
+      "request": {
+        "method": "GET",
+        "url": {"raw":"http://localhost:3001/users","protocol":"http","host":["localhost"],"port":"3001","path":["users"]}
+      }
+    },
+    {
+      "name": "Create Event",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "url": {"raw":"http://localhost:3002/events","protocol":"http","host":["localhost"],"port":"3002","path":["events"]},
+        "body": {"mode":"raw","raw":"{\n  \"title\": \"Concert\",\n  \"seats\": 1,\n  \"date\": \"2026-01-01T10:00:00.000Z\"\n}"}
+      }
+    },
+    {
+      "name": "Get All Events",
+      "request": {
+        "method": "GET",
+        "url": {"raw":"http://localhost:3002/events","protocol":"http","host":["localhost"],"port":"3002","path":["events"]}
+      }
+    },
+    {
+      "name": "Get Event (cached)",
+      "request": {
+        "method": "GET",
+        "url": {"raw":"http://localhost:3002/events/{{eventId}}","protocol":"http","host":["localhost"],"port":"3002","path":["events","{{eventId}}"]}
+      }
+    },
+    {
+      "name": "Book Seat",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "url": {"raw":"http://localhost:3003/bookings","protocol":"http","host":["localhost"],"port":"3003","path":["bookings"]},
+        "body": {"mode":"raw","raw":"{\n  \"userId\": \"{{userId}}\",\n  \"eventId\": \"{{eventId}}\"\n}"}
+      }
+    },
+    {
+      "name": "Get All Bookings",
+      "request": {
+        "method": "GET",
+        "url": {"raw":"http://localhost:3003/bookings","protocol":"http","host":["localhost"],"port":"3003","path":["bookings"]}
+      }
+    },
+    {
+      "name": "Get Notifications",
+      "request": {
+        "method": "GET",
+        "url": {"raw":"http://localhost:3004/notifications","protocol":"http","host":["localhost"],"port":"3004","path":["notifications"]}
+      }
+    }
+  ]
+}
