@@ -11,6 +11,10 @@ spec:
     metadata:
       labels: { app: booking-service }
     spec:
+      initContainers:
+        - name: wait-for-nats
+          image: busybox:1.35
+          command: ['sh', '-c', 'until nc -z nats 4222; do echo waiting for nats; sleep 2; done']
       containers:
         - name: booking-service
           image: booking-service:latest
